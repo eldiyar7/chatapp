@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include partials/templates/head.ejs %>
+</head>
+<body>
+<header>
+    <% include partials/templates/navigation.ejs %>
+</header>
+<div class="container">
+    <h1>Rooms:</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="info">Name</th>
+                <th class="info">ID</th>
+            </tr>
+        </thead>
+        <tbody>
+             <% rooms.forEach(function (room) { %>
+             <tr>
+                 <td><%= room.name %></td>
+                 <td><%= room.id %></td>
+             </tr>
+             <% }); %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
