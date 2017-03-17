@@ -9,9 +9,11 @@
 </header>
 <div class="container">
     <h1>Rooms:</h1>
+    <a href="/admin/rooms/add" class="btn btn-primary">Create a new chatroom</a>
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th class="info">Delete</th>
                 <th class="info">Name</th>
                 <th class="info">ID</th>
             </tr>
@@ -19,6 +21,7 @@
         <tbody>
              <% rooms.forEach(function (room) { %>
              <tr>
+                 <td><a href="/admin/rooms/delete/<%= room.id %>"><span class="glyphicon glyphicon-remove"></span></a></td>
                  <td><%= room.name %></td>
                  <td><%= room.id %></td>
              </tr>
