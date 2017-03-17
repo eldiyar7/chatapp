@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include partials/templates/head.ejs %>
+</head>
+<body>
+<header>
+    <% include partials/templates/navigation.ejs %>
+</header>
+<div class="container">
+    <h1>Create a chat room</h1>
+    <form method="post">
+        <fieldset class="form-group">
+            <label for="name">Create</label>
+            <input name="name" type="text" class="form-control">
+            <small class="text-muted">Give your chat room a meaningful name.</small>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Create new chat room</button>
+    </form>
+</div>
+</body>
+</html>
