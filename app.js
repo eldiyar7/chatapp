@@ -38,7 +38,8 @@ app.post('/admin/rooms/add', function (req, res) {
 
 app.get('/admin/rooms/delete/:id', function (req, res) {
     var roomId = req.params.id;
-    res.send(roomId);
+    rooms = rooms.filter(r => r.id !== roomId);
+    res.redirect('/admin/rooms');
 });
 
 app.get('/admin/users', function (req, res) {
