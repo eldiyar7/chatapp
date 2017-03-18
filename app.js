@@ -3,6 +3,7 @@ var app = express();
 var rooms = require('./data/rooms.json');
 var bodyParser = require('body-parser');
 var uuid = require('node-uuid');
+var _ = require('lodash');
 
 app.use(express.static('public')); // makes possible serving static assets
 app.use(express.static('node_modules/bootstrap/dist'));
@@ -33,6 +34,22 @@ app.post('/admin/rooms/add', function (req, res) {
         id : uuid.v4()
     }
     rooms.push(room);
+    res.redirect('/admin/rooms');
+});
+
+app.get('/admin/rooms/edit/:id', function (req, res) {
+    var roomId = req.params.id;
+    var room = _.find(rooms, r => r.id === roomId);
+    res.render('edit', {
+        title : 'Edit room name',
+        room : room
+    });
+});
+
+app.post('/admin/rooms/edit/:id', function (req, res) {
+    var roomId = req.params.id;
+    var room = _.find(rooms, r => r.id == roomId)
+    room.name = req.body.name;
     res.redirect('/admin/rooms');
 });
 

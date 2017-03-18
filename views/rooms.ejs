@@ -15,6 +15,7 @@
             <tr>
                 <th class="info">Delete</th>
                 <th class="info">Name</th>
+                <th class="info">Edit</th>
                 <th class="info">ID</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
              <tr>
                  <td><a href="/admin/rooms/delete/<%= room.id %>"><span class="glyphicon glyphicon-remove"></span></a></td>
                  <td><%= room.name %></td>
+                 <td><a href="/admin/rooms/edit/<%= room.id %>"><span class="glyphicon glyphicon-pencil"></span></a></td>
                  <td><%= room.id %></td>
              </tr>
              <% }); %>
