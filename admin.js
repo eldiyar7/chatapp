@@ -4,6 +4,7 @@ var rooms = require('./data/rooms.json');
 var uuid = require('node-uuid');
 var _ = require('lodash');
 
+// Get rooms
 router.get('/rooms', function (req, res) {
     res.render('rooms',
         {
@@ -13,6 +14,7 @@ router.get('/rooms', function (req, res) {
         });
 });
 
+// Add room
 router.route('/rooms/add')
     .get(function (req, res) {
         res.render('add',
@@ -27,35 +29,34 @@ router.route('/rooms/add')
             id: uuid.v4()
         }
         rooms.push(room);
-        res.redirect(req.baseUrl + "/rooms");  // /admin/rooms
+        res.redirect(req.baseUrl + "/rooms");
     });
 
+// Edit room
 router.route('/rooms/edit/:id')
-    .get(function (req, res) {
+    .all(function (req, res, next) {
         var roomId = req.params.id;
         var room = _.find(rooms, r => r.id === roomId);
         if (!room) {
             res.sendStatus(404);
             return;
         }
+        res.locals.room = room;
+        next();
+    })
+    .get(function (req, res) {
         res.render('edit',
             {
                 title: 'Edit room name',
-                room: room,
                 request: req
             });
     })
     .post(function (req, res) {
-        var roomId = req.params.id;
-        var room = _.find(rooms, r => r.id == roomId);
-        if (!room) {
-            res.sendStatus(404);
-            return;
-        }
-        room.name = req.body.name;
+        res.locals.room.name = req.body.name;
         res.redirect(req.baseUrl + "/rooms");
     });
 
+// Delete room
 router.route('/rooms/delete/:id')
     .get(function (req, res) {
         var roomId = req.params.id;
