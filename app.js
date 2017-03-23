@@ -6,7 +6,8 @@ app.use(express.static('public'));
 app.use(express.static('node_modules/bootstrap/dist'));
 app.use(express.static('node_modules/jquery/dist'));
 app.use(express.static('node_modules/font-awesome'));
-app.use(bodyParser.urlencoded({ extended : true }));
+app.use(bodyParser.urlencoded({ extended : true })); // to parse form data
+app.use(bodyParser.json()); // to parse json
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
