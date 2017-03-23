@@ -37,6 +37,14 @@ router.route('/rooms/:roomId/messages')
 
         messages.push(message);
         res.sendStatus(200);
+    })
+    .delete(function (req, res) {
+        var roomId = req.params.roomId;
+
+        messages = messages.filter(m => m.roomId !== roomId);
+
+        res.sendStatus(200);
     });
+
 
 module.exports = router;
