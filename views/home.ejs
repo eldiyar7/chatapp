@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include partials/templates/head.ejs %>
+</head>
+<body>
+<header>
+    <% include partials/templates/navigation.ejs %>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Rooms</h3>
+            <div id="rooms" class="list-group"></div>
+        </div>
+        <div class="col-md-8">
+            <h3 id="roomName"></h3>
+            <textarea name="messages" id="messages" cols="30" rows="15" class="form-control"></textarea>
+            <button id="delete" class="btn btn-default">Delete all messages</button>
+            <h3>Post a message</h3>
+            <textarea name="message" id="message" cols="30" rows="2" class="form-control"></textarea>
+            <button id="post" class="btn btn-primary">Post</button>
+        </div>
+    </div>
+</div>
+<% include partials/templates/scripts.ejs %>
+</body>
+</html>
